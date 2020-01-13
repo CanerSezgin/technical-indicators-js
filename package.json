@@ -1,0 +1,42 @@
+{
+  "name": "technical-analysis-js",
+  "version": "0.0.1",
+  "description": "Financial Market Technical Analysis Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/app.js",
+    "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CanerSezgin/technical-indicators-js.git"
+  },
+  "keywords": [
+    "finance",
+    "finacial markets",
+    "technical indicators",
+    "cryptocurrency",
+    "market stock",
+    "stock trading",
+    "stock data",
+    "stock history"
+  ],
+  "author": "Caner Sezgin <ccanersezgin@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CanerSezgin/technical-indicators-js/issues"
+  },
+  "homepage": "https://github.com/CanerSezgin/technical-indicators-js#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "@types/node": "^13.1.6",
+    "nodemon": "^2.0.2",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "ts-node": "^8.6.2"
+  }
+}
