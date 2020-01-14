@@ -4,8 +4,8 @@ const averages = new Averages();
 
 describe("Averages", () => {
   it("Single Average", () => {
-    const prices = [3, 6, 9, 12];
+    const prices = [3, 6, 9, 22];
     const result = averages.simple(prices);
-    expect(result).toBe(7.495);
+    expect(result).toBe(10);
   });
 });

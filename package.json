@@ -4,7 +4,8 @@
   "description": "Financial Market Technical Analysis Library",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --collect-coverage",
+    "test:watch": "jest --watch a",
     "start": "tsc && node dist/app.js",
     "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/app.ts"
   },
