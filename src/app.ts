@@ -1,12 +1,12 @@
 import os from "os";
 import config from "./config/config";
 import express from "express";
-import Stock from "./lib/Stock";
+import StockPrice from "./lib/StockPrice";
 
 const app = express();
 const port = 3000;
 app.get("/", (req, res) => {
-  const stock = new Stock(3, 5, 7, 8);
+  const stock = new StockPrice(3, 5, 7, 8);
   res.send(stock);
 });
 

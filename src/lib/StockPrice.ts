@@ -1,4 +1,4 @@
-export default class Stock {
+export default class StockPrice {
   readonly open: number;
   readonly high: number;
   readonly low: number;
