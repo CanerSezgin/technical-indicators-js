@@ -29,5 +29,26 @@ export const calculateAvgGainLoss = (
   };
 };
 
-export const calculateRS = (avgGain: number, avgLoss: number): number =>
-  avgGain / avgLoss;
+/**
+ *
+ * @param previousAvgGL Previous avgGain or avgLoss
+ * @param period
+ * @param currentGL Current Gain or Loss
+ */
+export const calculateAvgGainLossWithRSSmoothing = (
+  previousAvgGL: number,
+  period: number,
+  currentGL: number
+): number => (previousAvgGL * (period - 1) + currentGL) / period;
+
+export const calculateRSI = (avgGain: number, avgLoss: number): number => {
+  if (avgLoss === 0) {
+    return 100;
+  }
+  if (avgGain === 0) {
+    return 0;
+  }
+  const RS = avgGain / avgLoss;
+  const RSI = 100 - 100 / (1 + RS);
+  return RSI;
+};

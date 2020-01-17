@@ -1,4 +1,8 @@
-import { calculateAvgGainLoss, calculateRS } from "../src/lib/oscillators/RSI";
+import {
+  calculateAvgGainLoss,
+  calculateRSI,
+  calculateAvgGainLossWithRSSmoothing
+} from "../src/lib/oscillators/RSI";
 import { floatToFixed } from "../src/util/general";
 
 describe("RSI", () => {
@@ -25,8 +29,37 @@ describe("RSI", () => {
     expect(floatToFixed(avgLoss)).toBe(0.1);
   });
 
-  it("Calculate RS", () => {
-    const RS = calculateRS(avgGain, avgLoss);
-    expect(floatToFixed(RS)).toBe(2.39);
+  it("Calculate avgGain avgLoss with smoothing.", () => {
+    const period = 14;
+    const [previousAvgGain, previousAvgLoss] = [0.1971, 0.1939];
+    const [gain, loss] = [0, 1.33];
+
+    const currentAvgLoss = calculateAvgGainLossWithRSSmoothing(
+      previousAvgLoss,
+      period,
+      loss
+    );
+    const currentAvgGain = calculateAvgGainLossWithRSSmoothing(
+      previousAvgGain,
+      period,
+      gain
+    );
+    expect(floatToFixed(currentAvgLoss)).toBe(0.28);
+    expect(floatToFixed(currentAvgGain)).toBe(0.18);
+  });
+
+  it("Calculate RSI", () => {
+    const RSI = calculateRSI(avgGain, avgLoss);
+    expect(floatToFixed(RSI)).toBe(70.46);
+  });
+
+  it("Calculate RSI with avgLoss = 0", () => {
+    const RSI = calculateRSI(avgGain, 0);
+    expect(floatToFixed(RSI)).toBe(100);
+  });
+
+  it("Calculate RSI with avgGain = 0", () => {
+    const RSI = calculateRSI(0, avgLoss);
+    expect(floatToFixed(RSI)).toBe(0);
   });
 });
