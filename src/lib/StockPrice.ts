@@ -1,12 +1,10 @@
-import { floatToFixed } from "../util/general";
-
 export enum Status {
-  profit = "Profit",
+  gain = "Gain",
   loss = "Loss",
   noChange = "No Change"
 }
 
-interface ProfitLoss {
+interface GainLoss {
   status: string;
   amount: number;
   percentage: number;
@@ -27,21 +25,21 @@ export default class StockPrice {
   }
 }
 
-export const calculateProfitLoss = (
+export const getPriceChange = (
   oldPrice: number,
   newPrice: number
-): ProfitLoss => {
+): GainLoss => {
   let status;
   const amount = newPrice - oldPrice;
   const percentage = (amount / oldPrice) * 100;
 
-  if (amount > 0) status = Status.profit;
+  if (amount > 0) status = Status.gain;
   else if (amount < 0) status = Status.loss;
   else status = Status.noChange;
 
   return {
     status,
-    amount: floatToFixed(amount, 2),
-    percentage: floatToFixed(percentage, 2)
+    amount,
+    percentage
   };
 };

@@ -8,8 +8,7 @@ export default class Averages {
   simple(prices: number[]): number {
     const n = prices.length;
     const total = prices.reduce((cum: number, val: number) => cum + val, 0);
-    const result = total / n;
-    return floatToFixed(result, 2);
+    return total / n;
   }
 
   /**
@@ -24,8 +23,7 @@ export default class Averages {
       i--;
       return cum + val * i;
     }, 0);
-    const result = total / divider;
-    return floatToFixed(result, 2);
+    return total / divider;
   }
 
   /**
@@ -34,7 +32,6 @@ export default class Averages {
    */
   exponential(timePeriod: number, price: number, previousEMA: number): number {
     const multiplier = 2 / (timePeriod + 1);
-    const result = (price - previousEMA) * multiplier + previousEMA;
-    return floatToFixed(result, 2);
+    return (price - previousEMA) * multiplier + previousEMA;
   }
 }
