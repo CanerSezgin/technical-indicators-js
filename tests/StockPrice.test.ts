@@ -1,5 +1,18 @@
-import { getPriceChange, Status } from "../src/lib/StockPrice";
+import StockPrice, {
+  getPriceChange,
+  getTypicalPrice,
+  Status
+} from "../src/lib/StockPrice";
 import { floatToFixed } from "../src/util/general";
+
+describe("Calculate Typical Price", () => {
+  const price = new StockPrice(23.94, 24.2, 23.85, 23.89);
+
+  it("Typical Price", () => {
+    const response = getTypicalPrice(price);
+    expect(floatToFixed(response)).toBe(23.98);
+  });
+});
 
 describe("Calculate Stock Gain/Loss", () => {
   let noChangePrice: number;

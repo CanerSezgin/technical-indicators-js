@@ -1,7 +1,5 @@
-import Averages from "../src/lib/Averages";
+import averages from "../src/lib/Averages";
 import { floatToFixed } from "../src/util/general";
-
-const averages = new Averages();
 
 describe("Averages", () => {
   it("Single Average", () => {

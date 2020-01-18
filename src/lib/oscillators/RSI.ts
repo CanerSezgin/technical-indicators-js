@@ -30,7 +30,7 @@ export const calculateAvgGainLoss = (
 };
 
 /**
- *
+ * This smooting is used if previousAvgGain or previousAvgLoss is known
  * @param previousAvgGL Previous avgGain or avgLoss
  * @param period
  * @param currentGL Current Gain or Loss

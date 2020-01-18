@@ -25,6 +25,9 @@ export default class StockPrice {
   }
 }
 
+export const getTypicalPrice = (price: StockPrice): number =>
+  (price.high + price.low + price.close) / 3;
+
 export const getPriceChange = (
   oldPrice: number,
   newPrice: number

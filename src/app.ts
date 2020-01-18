@@ -10,18 +10,10 @@ app.get("/", (req, res) => {
   res.send(stock);
 });
 
-const server: { address: Function; timeout: number } = app.listen(
-  process.env.PORT || config.port,
-  () => {
-    const host = os.hostname();
-    console.log(
-      "Listening at http://%s:%s in %s environment.",
-      host,
-      server.address().port,
-      config.env
-    );
-  }
-);
+const server: { address: Function; timeout: number } = app.listen(process.env.PORT || config.port, () => {
+  const host = os.hostname();
+  console.log("Listening at http://%s:%s in %s environment.", host, server.address().port, config.env);
+});
 
 server.timeout = 25000; // sets timeout to 25 seconds
 
