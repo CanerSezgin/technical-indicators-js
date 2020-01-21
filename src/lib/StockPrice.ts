@@ -10,7 +10,6 @@ interface GainLoss {
   percentage: number;
 }
 
-// TODO: date might be necessary
 export default class StockPrice {
   readonly open: number;
   readonly high: number;
@@ -25,13 +24,9 @@ export default class StockPrice {
   }
 }
 
-export const getTypicalPrice = (price: StockPrice): number =>
-  (price.high + price.low + price.close) / 3;
+export const getTypicalPrice = (price: StockPrice): number => (price.high + price.low + price.close) / 3;
 
-export const getPriceChange = (
-  oldPrice: number,
-  newPrice: number
-): GainLoss => {
+export const getPriceChange = (oldPrice: number, newPrice: number): GainLoss => {
   let status;
   const amount = newPrice - oldPrice;
   const percentage = (amount / oldPrice) * 100;
