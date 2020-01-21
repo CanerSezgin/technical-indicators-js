@@ -1,5 +1,5 @@
 import { meanDeviation } from "../../util/general";
-import Stock from "../IStock";
+import Stock from "../Stock";
 import averages from "../Averages";
 
 export const calculateCCI = (prices: number[]): number => {
@@ -9,13 +9,17 @@ export const calculateCCI = (prices: number[]): number => {
   return (price - simpleAverage) / (0.015 * meanDev);
 };
 
+// TODO: There might be better way to apply this logic to all technicals
+// TODO: Get rid of hard coded priceType array and add more price types for meta data
+// such as TypicalPrice
 export const CCI = (data: Stock[], period: number) => {
+  const name = `CCI_${period}`;
   if (period > data.length) {
     return { status: "error", code: 422, message: "Period exceeded the length of data" };
   }
 
   for (let i = period - 1; i < data.length; i++) {
-    console.log("!!", data[i]);
+    const current = data[i];
     const subData = data.slice(i - period + 1, i + 1);
 
     const CCI_Results: any = {};
@@ -25,6 +29,8 @@ export const CCI = (data: Stock[], period: number) => {
       CCI_Results[type] = cci;
     });
 
-    console.log({ i, subData, CCI_Results });
+    current.technicals[name] = CCI_Results;
   }
+
+  return data;
 };

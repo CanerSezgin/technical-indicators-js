@@ -1,8 +1,9 @@
 import data from "../data/20days";
 import { CCI } from "../src/lib/oscillators/CCI";
 
+// Write a test
 describe("Calculate Technicals", () => {
   it("CCI", () => {
-    CCI(data, 3);
+    console.log(CCI(data, 3));
   });
 });
